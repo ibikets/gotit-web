@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOTIT INTERNATIONAL LTD | Presentation Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0c2d62;
+      --navy-deep: #081e42;
+      --gold: #c89b3c;
+      --cream: #f7ead1;
+      --text: #1e2a40;
+      --muted: #66738a;
+      --line: rgba(12, 45, 98, 0.12);
+      --white: #ffffff;
+      --bg: #f5f7fb;
+      --shadow: 0 24px 70px rgba(12,45,98,.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(200,155,60,.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(12,45,98,.13), transparent 30%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .page {
+      min-height: 100vh;
+      padding: 34px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .shell {
+      width: min(1180px, 100%);
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+    .logo-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(12,45,98,.08);
+      border-radius: 22px;
+      padding: 12px 18px;
+      backdrop-filter: blur(12px);
+    }
+    .logo-card img { width: 145px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(200,155,60,.18);
+    }
+    .hero {
+      text-align: center;
+      margin: 0 auto 38px;
+      max-width: 860px;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      margin-bottom: 14px;
+    }
+    h1 {
+      margin: 0;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      line-height: 1.04;
+      color: var(--navy-deep);
+      letter-spacing: -0.04em;
+    }
+    .hero p {
+      max-width: 720px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 34px;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      border-radius: 34px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.75);
+      isolation: isolate;
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 90px rgba(12,45,98,.19);
+    }
+    .card img.cover {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      transition: transform .4s ease;
+    }
+    .card:hover img.cover { transform: scale(1.05); }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,30,66,.08) 0%, rgba(8,30,66,.45) 42%, rgba(8,30,66,.92) 100%);
+      z-index: -1;
+    }
+    .card-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 28px;
+      color: #fff;
+    }
+    .card-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cream);
+      font-size: .76rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: .12em;
+      margin-bottom: 12px;
+    }
+    .card-kicker::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+    .card h2 {
+      font-family: Manrope, Inter, sans-serif;
+      margin: 0 0 10px;
+      font-size: 1.55rem;
+      line-height: 1.12;
+      color: #fff;
+    }
+    .card p {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.62;
+      font-size: .96rem;
+    }
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: 800;
+      font-size: .9rem;
+    }
+    .card-action span {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy-deep);
+      transition: transform .25s ease;
+    }
+    .card:hover .card-action span { transform: translateX(4px); }
+    .footer-note {
+      margin-top: 34px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    @media (max-width: 980px) {
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: 430px; }
+      .topbar { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 620px) {
+      .page { padding: 24px 14px; }
+      .logo-card img { width: 118px; }
+      .badge { font-size: .68rem; }
+      .card { border-radius: 26px; min-height: 390px; }
+      .card-content { padding: 22px; }
+      .hero p { font-size: .98rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="shell">
+      <div class="topbar">
+        <div class="logo-card">
+          <img src="website/assets/logos/gotit-logo.png" alt="GOTIT INTERNATIONAL LTD logo">
+        </div>
+        <div class="badge">Presentation Hub</div>
+      </div>
+
+      <div class="hero">
+        <span class="eyebrow">GOTIT INTERNATIONAL LTD</span>
+        <h1>Select a presentation package</h1>
+        <p>Access the complete project materials from one clean landing page: the corporate website, brand package, and premium company profile.</p>
+      </div>
+
+      <div class="cards">
+        <a class="card" href="website/index.html">
+          <img class="cover" src="website/assets/images/hero-ocean-platform.png" alt="Website preview">
+          <div class="card-content">
+            <div class="card-kicker">Website</div>
+            <h2>Corporate Website</h2>
+            <p>View the static HTML/CSS website designed for GOTIT’s oil and gas servicing positioning.</p>
+            <div class="card-action">Open Website <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="brand_package/brand-package.html">
+          <img class="cover" src="brand_package/assets/images/stationery-mockup.png" alt="Brand package preview">
+          <div class="card-content">
+            <div class="card-kicker">Brand Pack</div>
+            <h2>Brand Identity Kit</h2>
+            <p>Open the full brand package with logo usage, colors, stationery, apparel, accessories, and field applications.</p>
+            <div class="card-action">Open Brand Pack <span>→</span></div>
+          </div>
+        </a>
+
+        <a class="card" href="company_profile/company-profile.html">
+          <img class="cover" src="company_profile/assets/images/field-branding-mockup.png" alt="Company profile preview">
+          <div class="card-content">
+            <div class="card-kicker">Profile</div>
+            <h2>Company Profile</h2>
+            <p>Read the premium company profile document with fuller corporate details, services, HSE, and capabilities.</p>
+            <div class="card-action">Open Profile <span>→</span></div>
+          </div>
+        </a>
+      </div>
+
+      <p class="footer-note">Click any preview card to open the corresponding HTML page.</p>
+    </section>
+  </main>
+</body>
+</html>
